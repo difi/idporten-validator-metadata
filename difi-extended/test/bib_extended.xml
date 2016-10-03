@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<EntityConfig entityID="https://bivest.bib.no/simplesaml/module.php/saml/sp/metadata.php/default-sp" hosted="false" xmlns="urn:sun:fm:SAML:2.0:entityconfig">
+    <SPSSOConfig metaAlias="/sp">
+        <Attribute name="wantNameIDEncrypted">
+            <Value>false</Value>
+        </Attribute>
+        <Attribute name="responseArtifactMessageEncoding">
+            <Value>URI</Value>
+        </Attribute>
+        <Attribute name="wantAttributeEncrypted">
+            <Value>true</Value>
+        </Attribute>
+        <Attribute name="wantMNIResponseSigned">
+            <Value>false</Value>
+        </Attribute>
+        <Attribute name="wantLogoutRequestSigned">
+            <Value>true</Value>
+        </Attribute>
+        <Attribute name="wantLogoutResponseSigned">
+            <Value>true</Value>
+        </Attribute>
+        <Attribute name="wantPOSTResponseSigned">
+            <Value>true</Value>
+        </Attribute>
+        <Attribute name="wantArtifactResponseSigned">
+            <Value>true</Value>
+        </Attribute>
+        <Attribute name="wantMNIRequestSigned">
+            <Value>true</Value>
+        </Attribute>
+        <Attribute name="wantAssertionEncrypted">
+            <Value>true</Value>
+        </Attribute>
+        <Attribute name="basicAuthOn">
+            <Value>false</Value>
+        </Attribute>
+    </SPSSOConfig>
+</EntityConfig>

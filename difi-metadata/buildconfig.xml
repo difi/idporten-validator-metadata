@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildConfigurations xmlns="http://difi.no/xsd/vefa/validator/1.0">
+
+	<testfolder>test</testfolder>
+	<testfolder>unit</testfolder>
+
+	<configuration>
+		<identifier>idporten-saml20-metadata</identifier>
+		<title>Difi SAML 2.0 Metadata</title>
+		<standardId>urn:oasis:names:tc:SAML:2.0:metadata::EntityDescriptor</standardId>
+		<file source="xsd/saml-schema-metadata-2.0.xsd" path="xsd/saml-schema-metadata-2.0.xsd"/>
+		<file source="sch/IDPORTEN-METADATA.sch" path="xsl/IDPORTEN-METADATA.xsl" />
+	</configuration>
+
+	<include path="xsd/difi-saml-schema-metadata-2.0.xsd" />
+	<include path="xsd/saml-schema-assertion-2.0.xsd" />
+	<!-- <include path="xsd/saml-schema-metadata-2.0.xsd" /> -->
+	<include path="xsd/xenc-schema.xsd" />
+	<include path="xsd/xml.xsd" />
+	<include path="xsd/xmldsig-core-schema.xsd" />
+
+</buildConfigurations>
