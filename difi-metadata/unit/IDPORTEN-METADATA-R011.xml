@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="idporten-saml20-metadata">
 	<assert>
-		<scope>IDPORTEN-METADATA-R001</scope>
+		<scope>IDPORTEN-METADATA-R011</scope>
 	</assert>
 	<test>
 		<assert>
 			<description>Verify existence of key descriptor for encryption.</description>
-			<success>IDPORTEN-METADATA-R001</success>
+			<success>IDPORTEN-METADATA-R011</success>
 		</assert>
 		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
 
@@ -19,7 +19,7 @@
 	<test>
 		<assert>
 			<description>Verify existence of key descriptor for encryption.</description>
-			<error>IDPORTEN-METADATA-R001</error>
+			<error>IDPORTEN-METADATA-R011</error>
 		</assert>
 		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
 

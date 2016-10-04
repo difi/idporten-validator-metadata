@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="idporten-saml20-metadata">
+	<assert>
+		<scope>IDPORTEN-METADATA-R003</scope>
+	</assert>
+	<test>
+		<assert>
+			<description>Verify entityID contains HTTPS.</description>
+			<success>IDPORTEN-METADATA-R003</success>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="https://...">
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Verify entityID contains HTTPS.</description>
+			<warning>IDPORTEN-METADATA-R003</warning>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="http://...">
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Verify entityID contains HTTPS.</description>
+			<success>IDPORTEN-METADATA-R003</success>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="ftp://">
+
+		</md:EntityDescriptor>
+	</test>
+</testSet>
