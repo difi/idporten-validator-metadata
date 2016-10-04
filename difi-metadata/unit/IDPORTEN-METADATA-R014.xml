@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="idporten-saml20-metadata">
+	<assert>
+		<scope>IDPORTEN-METADATA-R014</scope>
+	</assert>
+	<test>
+		<assert>
+			<description>Verify valid supported protocols.</description>
+			<success>IDPORTEN-METADATA-R014</success>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol"/>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Verify valid supported protocols.</description>
+			<success>IDPORTEN-METADATA-R014</success>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"/>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Verify valid supported protocols.</description>
+			<success>IDPORTEN-METADATA-R014</success>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:1.1:protocol"/>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Verify valid supported protocols.</description>
+			<error>IDPORTEN-METADATA-R014</error>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:FTP"/>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Verify valid supported protocols.</description>
+			<error>IDPORTEN-METADATA-R014</error>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:FTP"/>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Verify valid supported protocols.</description>
+			<error>IDPORTEN-METADATA-R014</error>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol urn:oasis:names:FTP"/>
+
+		</md:EntityDescriptor>
+	</test>
+</testSet>

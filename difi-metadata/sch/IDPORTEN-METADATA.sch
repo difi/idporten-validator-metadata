@@ -17,6 +17,14 @@
     <value-of select="substring($url, 0, 7) = 'https:'"/>
   </function>
 
+  <function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:listInList">
+    <param name="values"/>
+    <param name="validValues"/>
+
+    <variable name="result" select="for $v in tokenize($values, '\s') return not(empty(index-of(tokenize($validValues, '\s'), $v)))"/>
+    <value-of select="empty(index-of($result, false()))"/>
+  </function>
+
   <pattern>
     <rule context="md:EntityDescriptor">
       <assert id="IDPORTEN-METADATA-R001" test="@entityID" flag="fatal">EntityID not set.</assert>
@@ -30,6 +38,9 @@
       <assert id="IDPORTEN-METADATA-R011" test="md:KeyDescriptor[@use='encryption']" flag="fatal">Key descriptor for encryption is missing.</assert>
       <assert id="IDPORTEN-METADATA-R012" test="@AuthnRequestsSigned = 'true'" flag="fatal">AuthnRequestsSigned MUST be supported.</assert>
       <assert id="IDPORTEN-METADATA-R013" test="@WantAssertionsSigned = 'true'" flag="fatal">WantAssertionsSigned MUST be supported.</assert>
+    </rule>
+    <rule context="md:SPSSODescriptor/@protocolSupportEnumeration">
+      <assert id="IDPORTEN-METADATA-R014" test="false() or xs:boolean(u:listInList(., 'urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol'))" flag="fatal">List of supported protocols contains invalid protocols.</assert>
     </rule>
     <rule context="ds:X509Data">
       <assert id="IDPORTEN-METADATA-R020" test="ds:X509Certificate" flag="fatal">Only X509 certificate allowed.</assert>
