@@ -29,10 +29,6 @@
     <rule context="md:EntityDescriptor">
       <assert id="IDPORTEN-METADATA-R001" test="@entityID" flag="fatal">EntityID not set.</assert>
     </rule>
-    <rule context="md:EntityDescriptor/@entityID">
-      <assert id="IDPORTEN-METADATA-R002" test="xs:boolean(u:verifyHTTP(.)) or xs:boolean(u:verifyHTTPS(.))" flag="fatal">EntityID not HTTP or HTTPS.</assert>
-      <assert id="IDPORTEN-METADATA-R003" test="not(xs:boolean(u:verifyHTTP(.))) or xs:boolean(u:verifyHTTPS(.))" flag="warning">EntityID not HTTPS.</assert>
-    </rule>
     <rule context="md:SPSSODescriptor">
       <assert id="IDPORTEN-METADATA-R010" test="md:KeyDescriptor[@use='signing']" flag="fatal">Key descriptor for signing is missing.</assert>
       <assert id="IDPORTEN-METADATA-R011" test="md:KeyDescriptor[@use='encryption']" flag="fatal">Key descriptor for encryption is missing.</assert>
@@ -71,7 +67,10 @@
       <assert id="IDPORTEN-METADATA-R044" test="not(xs:boolean(u:verifyHTTP(.))) or xs:boolean(u:verifyHTTPS(.))" flag="warning">ResponseLocation of AssertionConsumerService is not HTTPS.</assert>
     </rule>
     <rule context="md:AssertionConsumerService/@Binding">
-      <assert id="IDPORTEN-METADATA-R045" test="index-of(tokenize('urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', '\s'), string(.))" flag="fatal">Invalid binding value for AssertionConsumerService.</assert>
+      <assert id="IDPORTEN-METADATA-R045" test="index-of(tokenize('urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', '\s'), string(.))" flag="fatal">Invalid binding value (<value-of select="." />) for AssertionConsumerService.</assert>
+    </rule>
+    <rule context="md:NameIDFormat">
+      <assert id="IDPORTEN-METADATA-R050" test="index-of(tokenize('urn:oasis:names:tc:SAML:2.0:nameid-format:persistent urn:oasis:names:tc:SAML:2.0:nameid-format:transient', '\s'), .)" flag="warning">Invalid value (<value-of select="." />) for NameIDFormat.</assert>
     </rule>
   </pattern>
 </schema>

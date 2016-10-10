@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="idporten-saml20-metadata">
+	<assert>
+		<scope>IDPORTEN-METADATA-R050</scope>
+	</assert>
+	<test>
+		<assert>
+			<description>Verify valid value of NameIDFormat.</description>
+			<success number="2">IDPORTEN-METADATA-R050</success>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:transient</md:NameIDFormat>
+			<md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</md:NameIDFormat>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Verify valid value of NameIDFormat.</description>
+			<warning number="4">IDPORTEN-METADATA-R050</warning>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:Transient</md:NameIDFormat>
+			<md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:Persistent</md:NameIDFormat>
+			<md:NameIDFormat></md:NameIDFormat>
+			<md:NameIDFormat/>
+
+		</md:EntityDescriptor>
+	</test>
+</testSet>

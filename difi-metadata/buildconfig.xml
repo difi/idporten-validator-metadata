@@ -8,7 +8,7 @@
 
 	<configuration>
 		<identifier>idporten-saml20-metadata</identifier>
-		<title>Difi SAML 2.0 Metadata</title>
+		<title>ID-porten SAML 2.0 Metadata</title>
 		<standardId>urn:oasis:names:tc:SAML:2.0:metadata::EntityDescriptor</standardId>
 		<file source="xsd/saml-schema-metadata-2.0.xsd" path="xsd/saml-schema-metadata-2.0.xsd"/>
 		<file source="sch/IDPORTEN-METADATA.sch" path="xsl/IDPORTEN-METADATA.xsl" />
