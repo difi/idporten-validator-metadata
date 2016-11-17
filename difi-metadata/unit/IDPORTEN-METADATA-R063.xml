@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="idporten-saml20-metadata">
+	<assert>
+		<scope>IDPORTEN-METADATA-R063</scope>
+	</assert>
+	<test>
+		<assert>
+			<description>Valid key size must be provided for 3DES.</description>
+			<success>IDPORTEN-METADATA-R063</success>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc">
+				 <xenc:KeySize xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">0</xenc:KeySize>
+			</md:EncryptionMethod>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Valid key size must be provided for 3DES.</description>
+			<success>IDPORTEN-METADATA-R063</success>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc">
+				 <xenc:KeySize xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">112</xenc:KeySize>
+			</md:EncryptionMethod>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Valid key size must be provided for 3DES.</description>
+			<success>IDPORTEN-METADATA-R063</success>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc">
+				 <xenc:KeySize xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">168</xenc:KeySize>
+			</md:EncryptionMethod>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Valid key size must be provided for 3DES.</description>
+			<error>IDPORTEN-METADATA-R063</error>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#tripledes-cbc">
+				 <xenc:KeySize xmlns:xenc="http://www.w3.org/2001/04/xmlenc#">256</xenc:KeySize>
+			</md:EncryptionMethod>
+
+		</md:EntityDescriptor>
+	</test>
+</testSet>

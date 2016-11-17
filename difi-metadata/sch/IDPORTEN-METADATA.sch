@@ -5,6 +5,7 @@
 
   <ns uri="urn:oasis:names:tc:SAML:2.0:metadata" prefix="md"/>
   <ns uri="http://www.w3.org/2000/09/xmldsig#" prefix="ds"/>
+  <ns uri="http://www.w3.org/2001/04/xmlenc#" prefix="xenc"/>
   <ns uri="utils" prefix="u"/>
 
   <function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:verifyHTTP">
@@ -91,6 +92,16 @@
     </rule>
     <rule context="md:NameIDFormat">
       <assert id="IDPORTEN-METADATA-R050" test="index-of(tokenize('urn:oasis:names:tc:SAML:2.0:nameid-format:persistent urn:oasis:names:tc:SAML:2.0:nameid-format:transient', '\s'), .)" flag="warning">Invalid value (<value-of select="." />) for NameIDFormat.</assert>
+    </rule>
+    <rule context="md:EncryptionMethod[@Algorithm='http://www.w3.org/2001/04/xmlenc#aes128-cbc']">
+      <assert id="IDPORTEN-METADATA-R062" test="index-of(tokenize('128 192 256', '\s'), string(xenc:KeySize))" flag="fatal">Key size <value-of select="xenc:KeySize"/> is not a valid value.</assert>
+    </rule>
+    <rule context="md:EncryptionMethod[@Algorithm='http://www.w3.org/2001/04/xmlenc#tripledes-cbc']">
+      <assert id="IDPORTEN-METADATA-R063" test="index-of(tokenize('0 112 168', '\s'), string(xenc:KeySize))" flag="fatal">Key size <value-of select="xenc:KeySize"/> is not a valid value.</assert>
+    </rule>
+    <rule context="md:EncryptionMethod">
+      <assert id="IDPORTEN-METADATA-R060" test="@Algorithm" flag="fatal">Encryption algorithm not set.</assert>
+      <assert id="IDPORTEN-METADATA-R061" test="not(@Algorithm)" flag="fatal">Invalid algorithm '<value-of select="@Algorithm"/>'.</assert>
     </rule>
   </pattern>
 </schema>
