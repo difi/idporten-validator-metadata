@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="idporten-saml20-metadata">
+	<assert>
+		<scope>IDPORTEN-METADATA-R037</scope>
+		<scope>TEST</scope>
+	</assert>
+	<test>
+		<assert>
+			<description>Verify hostnmae.</description>
+			<success>IDPORTEN-METADATA-R037</success>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:SingleLogoutService ResponseLocation="https://idporten.difi.no/"/>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Special letters not allowed in hostname.</description>
+			<warning number="2">IDPORTEN-METADATA-R037</warning>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:SingleLogoutService ResponseLocation="https://løcalhost/"/>
+			<md:SingleLogoutService ResponseLocation="https://LOCALHÅST/"/>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Hostname 'localhost' not acceptable.</description>
+			<warning number="2">IDPORTEN-METADATA-R037</warning>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:SingleLogoutService ResponseLocation="https://localhost/"/>
+			<md:SingleLogoutService ResponseLocation="https://LOCALHOST/"/>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Ip not allowed for hostname.</description>
+			<warning number="3">IDPORTEN-METADATA-R037</warning>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:SingleLogoutService ResponseLocation="https://127.0.0.1/"/>
+			<md:SingleLogoutService ResponseLocation="https://192.168.0.1/"/>
+			<md:SingleLogoutService ResponseLocation="https://8.8.8.8/"/>
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Space not allowed.</description>
+			<warning number="3">IDPORTEN-METADATA-R037</warning>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+
+			<md:SingleLogoutService ResponseLocation="https://127.0.0.1/ "/>
+			<md:SingleLogoutService ResponseLocation="https ://192.168.0.1/"/>
+			<md:SingleLogoutService ResponseLocation="ht tps://8.8.8.8/"/>
+
+		</md:EntityDescriptor>
+	</test>
+</testSet>

@@ -17,6 +17,17 @@
     <value-of select="substring($url, 0, 7) = 'https:'"/>
   </function>
 
+  <function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:verifyUrl">
+    <param name="url"/>
+    <value-of select="not(matches($url, '[ ]'))"/>
+  </function>
+
+  <function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:verifyHostname">
+    <param name="url"/>
+    <variable name="hostname" select="lower-case(tokenize($url, '[/:]')[4])"/>
+    <value-of select="matches($hostname, '^[a-z0-9\-\.]+$') and not($hostname = 'localhost') and not(matches($hostname,'\d{0,3}\.\d{0,3}\.\d{0,3}\.\d{0,3}'))"/>
+  </function>
+
   <function xmlns="http://www.w3.org/1999/XSL/Transform" name="u:listInList">
     <param name="values"/>
     <param name="validValues"/>
@@ -49,10 +60,12 @@
     <rule context="md:SingleLogoutService/@Location">
       <assert id="IDPORTEN-METADATA-R031" test="xs:boolean(u:verifyHTTP(.)) or xs:boolean(u:verifyHTTPS(.))" flag="fatal">Location of SingleLogoutService is not HTTP or HTTPS.</assert>
       <assert id="IDPORTEN-METADATA-R032" test="not(xs:boolean(u:verifyHTTP(.))) or xs:boolean(u:verifyHTTPS(.))" flag="warning">Location of SingleLogoutService is not HTTPS.</assert>
+      <assert id="IDPORTEN-METADATA-R036" test="xs:boolean(u:verifyHostname(.)) and xs:boolean(u:verifyUrl(.))" flag="warning">Must use a proper hostname and contain no space(s).</assert>
     </rule>
     <rule context="md:SingleLogoutService/@ResponseLocation">
       <assert id="IDPORTEN-METADATA-R033" test="xs:boolean(u:verifyHTTP(.)) or xs:boolean(u:verifyHTTPS(.))" flag="fatal">ResponseLocation of SingleLogoutService is not HTTP or HTTPS.</assert>
       <assert id="IDPORTEN-METADATA-R034" test="not(xs:boolean(u:verifyHTTP(.))) or xs:boolean(u:verifyHTTPS(.))" flag="warning">ResponseLocation of SingleLogoutService is not HTTPS.</assert>
+      <assert id="IDPORTEN-METADATA-R037" test="xs:boolean(u:verifyHostname(.)) and xs:boolean(u:verifyUrl(.))" flag="warning">Must use a proper hostname and contain no space(s).</assert>
     </rule>
     <rule context="md:SingleLogoutService/@Binding">
       <assert id="IDPORTEN-METADATA-R035" test="index-of(tokenize('urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect', '\s'), string(.))" flag="fatal">Invalid binding value for SingleLogoutService.</assert>
@@ -63,10 +76,12 @@
     <rule context="md:AssertionConsumerService/@Location">
       <assert id="IDPORTEN-METADATA-R041" test="xs:boolean(u:verifyHTTP(.)) or xs:boolean(u:verifyHTTPS(.))" flag="fatal">Location of AssertionConsumerService is not HTTP or HTTPS.</assert>
       <assert id="IDPORTEN-METADATA-R042" test="not(xs:boolean(u:verifyHTTP(.))) or xs:boolean(u:verifyHTTPS(.))" flag="warning">Location of AssertionConsumerService is not HTTPS.</assert>
+      <assert id="IDPORTEN-METADATA-R045" test="xs:boolean(u:verifyHostname(.)) and xs:boolean(u:verifyUrl(.))" flag="warning">Must use a proper hostname and contain no space(s).</assert>
     </rule>
     <rule context="md:AssertionConsumerService/@ResponseLocation">
       <assert id="IDPORTEN-METADATA-R043" test="xs:boolean(u:verifyHTTP(.)) or xs:boolean(u:verifyHTTPS(.))" flag="fatal">ResponseLocation of AssertionConsumerService is not HTTP or HTTPS.</assert>
       <assert id="IDPORTEN-METADATA-R044" test="not(xs:boolean(u:verifyHTTP(.))) or xs:boolean(u:verifyHTTPS(.))" flag="warning">ResponseLocation of AssertionConsumerService is not HTTPS.</assert>
+      <assert id="IDPORTEN-METADATA-R046" test="xs:boolean(u:verifyHostname(.)) and xs:boolean(u:verifyUrl(.))" flag="warning">Must use a proper hostname and contain no space(s).</assert>
     </rule>
     <rule context="md:AssertionConsumerService/@Binding">
       <assert id="IDPORTEN-METADATA-R045" test="index-of(tokenize('urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST', '\s'), string(.))" flag="fatal">Invalid binding value (<value-of select="." />) for AssertionConsumerService.</assert>
