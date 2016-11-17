@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testSet xmlns="http://difi.no/xsd/vefa/validator/1.0" configuration="idporten-saml20-metadata">
+	<assert>
+		<scope>IDPORTEN-METADATA-R002</scope>
+	</assert>
+	<test>
+		<assert>
+			<description>Verify content of entityID.</description>
+			<success>IDPORTEN-METADATA-R002</success>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="test">
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Verify content of entityID.</description>
+			<error>IDPORTEN-METADATA-R002</error>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="te st">
+
+		</md:EntityDescriptor>
+	</test>
+	<test>
+		<assert>
+			<description>Verify content of entityID.</description>
+			<error>IDPORTEN-METADATA-R002</error>
+		</assert>
+		<md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" entityID="tæst">
+
+		</md:EntityDescriptor>
+	</test>
+</testSet>

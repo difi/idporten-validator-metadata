@@ -40,6 +40,9 @@
     <rule context="md:EntityDescriptor">
       <assert id="IDPORTEN-METADATA-R001" test="@entityID" flag="fatal">EntityID not set.</assert>
     </rule>
+    <rule context="md:EntityDescriptor/@entityID">
+      <assert id="IDPORTEN-METADATA-R002" test="not(matches(lower-case(.), '[æøå ]'))" flag="fatal">Attribute entityID contains illegal characters.</assert>
+    </rule>
     <rule context="md:SPSSODescriptor">
       <assert id="IDPORTEN-METADATA-R010" test="md:KeyDescriptor[@use='signing']" flag="fatal">Key descriptor for signing is missing.</assert>
       <assert id="IDPORTEN-METADATA-R011" test="md:KeyDescriptor[@use='encryption']" flag="fatal">Key descriptor for encryption is missing.</assert>
