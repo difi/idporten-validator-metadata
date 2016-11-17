@@ -34,6 +34,8 @@
       <assert id="IDPORTEN-METADATA-R011" test="md:KeyDescriptor[@use='encryption']" flag="fatal">Key descriptor for encryption is missing.</assert>
       <assert id="IDPORTEN-METADATA-R012" test="@AuthnRequestsSigned = 'true'" flag="fatal">AuthnRequestsSigned MUST be supported.</assert>
       <assert id="IDPORTEN-METADATA-R013" test="@WantAssertionsSigned = 'true'" flag="fatal">WantAssertionsSigned MUST be supported.</assert>
+      <assert id="IDPORTEN-METADATA-R015" test="md:SingleLogoutService" flag="fatal">Must specify SingleLogoutService.</assert>
+      <assert id="IDPORTEN-METADATA-R016" test="md:NameIDFormat" flag="fatal">Must specify NameIDFormat.</assert>
     </rule>
     <rule context="md:SPSSODescriptor/@protocolSupportEnumeration">
       <assert id="IDPORTEN-METADATA-R014" test="false() or xs:boolean(u:listInList(., 'urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol'))" flag="fatal">List of supported protocols contains invalid protocols.</assert>

@@ -16,6 +16,7 @@
       </ds:KeyInfo>
     </md:KeyDescriptor>
     <md:SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://bivest.bib.no/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp"/>
+    <md:NameIDFormat>urn:oasis:names:tc:SAML:2.0:nameid-format:persistent</md:NameIDFormat>
     <md:AssertionConsumerService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact" Location="https://bivest.bib.no/simplesaml/module.php/saml/sp/saml2-acs.php/default-sp" index="2"/>
   </md:SPSSODescriptor>
 </md:EntityDescriptor>
